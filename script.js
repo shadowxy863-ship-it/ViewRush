@@ -8,8 +8,7 @@ document.getElementById("url").value;
 
 if(url==""){
 
-document.getElementById("status")
-.innerHTML="⚠️ Enter YouTube URL";
+alert("Please enter YouTube URL");
 
 return;
 
@@ -17,14 +16,79 @@ return;
 
 
 
-document.getElementById("status")
+let process =
+document.getElementById("processBox");
+
+
+let done =
+document.getElementById("done");
+
+
+
+process.style.display="block";
+
+done.style.display="none";
+
+
+
+let count=0;
+
+
+
+let timer=setInterval(function(){
+
+
+count++;
+
+
+document.getElementById("progress")
+.style.width=count+"%";
+
+
+
+document.getElementById("percent")
+.innerHTML=count+"%";
+
+
+
+
+if(count>=100){
+
+
+clearInterval(timer);
+
+
+
+process.style.display="none";
+
+done.style.display="block";
+
+
+
+let now =
+new Date().toLocaleString();
+
+
+
+document.getElementById("info")
 .innerHTML=
-"✅ Request submitted successfully";
+
+"Video URL:<br>"+
+
+url+
+
+"<br><br>Order Time:<br>"+
+
+now+
+
+"<br><br>Status: ⏳ Pending Processing";
 
 
 
-document.getElementById("pending")
-.style.display="block";
+}
+
+
+},50);
 
 
 
