@@ -1,11 +1,19 @@
 let used=false;
 
 
+window.onload=function(){
+
+showOrders();
+
+}
+
+
+
+
 function start(){
 
 
 let url=document.getElementById("url").value;
-
 
 let btn=document.getElementById("btn");
 
@@ -22,7 +30,6 @@ return;
 
 
 btn.disabled=true;
-
 
 
 let process=document.getElementById("processBox");
@@ -65,11 +72,9 @@ if(count>=100){
 clearInterval(timer);
 
 
-
 process.style.display="none";
 
 done.style.display="block";
-
 
 
 let time=new Date()
@@ -82,25 +87,39 @@ document.getElementById("info")
 
 "Video URL:<br>"+
 url+
-"<br><br>Order Time:<br>"+
+"<br><br>Time:<br>"+
 time+
-"<br><br>Status: ⏳ Pending Processing";
+"<br><br>Status: ⏳ Pending";
 
 
 
-if(!used){
+let orders =
+JSON.parse(localStorage.getItem("orders")) || [];
 
-used=true;
 
 
-setTimeout(()=>{
+orders.push({
+
+url:url,
+time:time,
+status:"Pending"
+
+});
+
+
+
+localStorage.setItem(
+"orders",
+JSON.stringify(orders)
+);
+
+
+
+showOrders();
+
+
 
 trial.style.display="block";
-
-},1000);
-
-
-}
 
 
 btn.disabled=false;
@@ -111,6 +130,71 @@ btn.disabled=false;
 
 },40);
 
+
+
+}
+
+
+
+
+function showOrders(){
+
+
+let box=document.getElementById("orders");
+
+
+let orders =
+JSON.parse(localStorage.getItem("orders")) || [];
+
+
+
+if(orders.length==0){
+
+box.innerHTML="No orders yet";
+
+return;
+
+}
+
+
+
+box.innerHTML="";
+
+
+
+orders.reverse().forEach(o=>{
+
+
+box.innerHTML += `
+
+<div class="order-card">
+
+<b>URL:</b><br>
+
+${o.url}
+
+
+<br><br>
+
+<b>Time:</b><br>
+
+${o.time}
+
+
+<br><br>
+
+<b>Status:</b>
+
+${o.status}
+
+
+</div>
+
+`;
+
+
+
+});
 
 
 }
