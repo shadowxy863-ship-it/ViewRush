@@ -8,10 +8,11 @@ body{
 margin:0;
 background:#050816;
 color:white;
-font-family:Arial;
+font-family:Arial, sans-serif;
 text-align:center;
 
 }
+
 
 
 nav{
@@ -20,6 +21,7 @@ padding:20px;
 background:#090d22;
 
 }
+
 
 
 
@@ -50,10 +52,80 @@ color:#00ffd5;
 
 
 
+
+
+/* Dashboard */
+
+.dashboard{
+
+width:90%;
+max-width:450px;
+
+margin:25px auto;
+
+padding:25px;
+
+border-radius:25px;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(15px);
+
+border:1px solid #ffffff20;
+
+}
+
+
+
+.stats{
+
+display:flex;
+
+justify-content:center;
+
+gap:15px;
+
+}
+
+
+
+.stat-card{
+
+width:140px;
+
+padding:20px;
+
+background:#111827;
+
+border-radius:20px;
+
+animation:float 3s infinite;
+
+}
+
+
+
+.stat-card h3{
+
+font-size:35px;
+
+color:#00ffd5;
+
+margin:0;
+
+}
+
+
+
+
+
+
 .hero-card{
 
 width:260px;
+
 margin:30px auto;
+
 padding:25px;
 
 background:rgba(0,255,213,.1);
@@ -70,10 +142,13 @@ animation:float 3s infinite;
 @keyframes float{
 
 50%{
+
 transform:translateY(-15px);
+
 }
 
 }
+
 
 
 
@@ -99,7 +174,35 @@ backdrop-filter:blur(15px);
 
 border:1px solid #ffffff20;
 
+animation:show .5s;
+
 }
+
+
+
+
+
+@keyframes show{
+
+from{
+
+opacity:0;
+
+transform:translateY(25px);
+
+}
+
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
 
 
 
@@ -109,6 +212,8 @@ border:1px solid #ffffff20;
 color:#00ffd5;
 
 }
+
+
 
 
 
@@ -124,7 +229,10 @@ border:0;
 
 margin:15px 0;
 
+font-size:16px;
+
 }
+
 
 
 
@@ -155,6 +263,7 @@ opacity:.5;
 
 
 
+
 .process,
 .done,
 .trial{
@@ -162,6 +271,7 @@ opacity:.5;
 display:none;
 
 }
+
 
 
 
@@ -179,6 +289,8 @@ border-radius:20px;
 overflow:hidden;
 
 }
+
+
 
 
 
@@ -215,7 +327,6 @@ text-align:left;
 
 
 
-
 .cards{
 
 display:flex;
@@ -244,12 +355,16 @@ width:150px;
 
 
 
+
+
 .work,
 .about{
 
 padding:50px 20px;
 
 }
+
+
 
 
 
