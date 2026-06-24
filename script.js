@@ -1,13 +1,12 @@
-const STORAGE_KEY = "viewrush_orders";
+const STORAGE_KEY="viewrush_orders";
 
 
-window.onload = function(){
+window.onload=function(){
 
 showOrders();
 updateStats();
 
-};
-
+}
 
 
 
@@ -15,10 +14,10 @@ updateStats();
 function start(){
 
 
-let url = document.getElementById("url").value;
+let url=document.getElementById("url").value;
 
-let btn = document.getElementById("btn");
 
+let btn=document.getElementById("btn");
 
 
 if(url==""){
@@ -31,15 +30,13 @@ return;
 
 
 
-btn.disabled = true;
+btn.disabled=true;
 
 
 
-let process = document.getElementById("processBox");
+let process=document.getElementById("processBox");
 
-let done = document.getElementById("done");
-
-let trial = document.getElementById("trial");
+let done=document.getElementById("done");
 
 
 
@@ -49,27 +46,23 @@ done.style.display="none";
 
 
 
-let count = 0;
+let count=0;
 
 
 
-let timer = setInterval(()=>{
-
+let timer=setInterval(()=>{
 
 
 count++;
 
 
-
 document.getElementById("progress")
-.style.width = count+"%";
+.style.width=count+"%";
 
 
 
 document.getElementById("percent")
-.innerHTML = count+"%";
-
-
+.innerHTML=count+"%";
 
 
 
@@ -79,41 +72,26 @@ if(count>=100){
 clearInterval(timer);
 
 
-
 process.style.display="none";
 
 done.style.display="block";
 
 
 
-let time = new Date().toLocaleString();
+let time=new Date().toLocaleString();
 
 
 
+document.getElementById("info").innerHTML=
 
-document.getElementById("info")
-.innerHTML =
-
-"Video URL:<br>" +
-
-url +
-
-"<br><br>Time:<br>" +
-
-time +
-
-"<br><br>Status: ⏳ Pending";
+url+"<br><br>"+time+
+"<br><br>⏳ Pending";
 
 
 
+let orders=
 
-
-let orders = JSON.parse(
-
-localStorage.getItem(STORAGE_KEY)
-
-) || [];
-
+JSON.parse(localStorage.getItem(STORAGE_KEY))||[];
 
 
 
@@ -131,7 +109,6 @@ status:"Pending"
 
 
 
-
 localStorage.setItem(
 
 STORAGE_KEY,
@@ -142,36 +119,22 @@ JSON.stringify(orders)
 
 
 
-
-
 showOrders();
 
 updateStats();
 
 
 
-
-
-trial.style.display="block";
-
-
-
 btn.disabled=false;
 
 
-
 }
-
 
 
 },40);
 
 
-
 }
-
-
-
 
 
 
@@ -181,23 +144,21 @@ btn.disabled=false;
 function showOrders(){
 
 
-let box = document.getElementById("orders");
+let box=document.getElementById("orders");
 
 
+let orders=
 
-let orders = JSON.parse(
-
-localStorage.getItem(STORAGE_KEY)
-
-) || [];
-
+JSON.parse(localStorage.getItem(STORAGE_KEY))||[];
 
 
 
 
 if(orders.length==0){
 
-box.innerHTML="No orders yet";
+box.innerHTML=
+
+"No orders yet 🚀";
 
 return;
 
@@ -206,31 +167,43 @@ return;
 
 
 
-
 box.innerHTML="";
 
 
 
+orders.slice().reverse().forEach((o,i)=>{
 
 
-orders.slice().reverse().forEach(o=>{
-
-
-
-box.innerHTML += `
+box.innerHTML+=`
 
 <div class="order-card">
 
 
-<b>URL:</b><br>
+<div class="order-number">
+
+Order #${orders.length-i}
+
+</div>
+
+
+<br>
+
+
+<b>Video URL:</b>
+
+<div class="url-text">
 
 ${o.url}
 
+</div>
 
-<br><br>
+
+<br>
 
 
-<b>Time:</b><br>
+<b>Time:</b>
+
+<br>
 
 ${o.time}
 
@@ -238,9 +211,11 @@ ${o.time}
 <br><br>
 
 
-<b>Status:</b>
+<div class="status">
 
-${o.status}
+⏳ ${o.status}
+
+</div>
 
 
 </div>
@@ -251,51 +226,30 @@ ${o.status}
 
 });
 
-
-
 }
-
-
-
-
-
 
 
 
 function updateStats(){
 
 
-let orders = JSON.parse(
+let orders=
 
-localStorage.getItem(STORAGE_KEY)
-
-) || [];
+JSON.parse(localStorage.getItem(STORAGE_KEY))||[];
 
 
 
-
-let total = document.getElementById("totalOrders");
-
-let pending = document.getElementById("pendingOrders");
+document.getElementById("totalOrders")
+.innerHTML=orders.length;
 
 
 
-if(total && pending){
+document.getElementById("pendingOrders")
+.innerHTML=
 
-
-total.innerHTML = orders.length;
-
-
-
-pending.innerHTML = orders.filter(
-
-o=>o.status=="Pending"
-
+orders.filter(
+x=>x.status=="Pending"
 ).length;
-
-
-}
-
 
 
 }
