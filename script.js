@@ -1,7 +1,9 @@
-let used=false;
+const STORAGE_KEY = "viewrush_orders";
+
+let used = false;
 
 
-window.onload=function(){
+window.onload = function(){
 
 showOrders();
 
@@ -13,13 +15,12 @@ showOrders();
 function start(){
 
 
-let url=document.getElementById("url").value;
+let url = document.getElementById("url").value;
 
-let btn=document.getElementById("btn");
+let btn = document.getElementById("btn");
 
 
-
-if(url==""){
+if(url == ""){
 
 alert("Please enter YouTube URL");
 
@@ -29,72 +30,80 @@ return;
 
 
 
-btn.disabled=true;
-
-
-let process=document.getElementById("processBox");
-
-let done=document.getElementById("done");
-
-let trial=document.getElementById("trial");
+btn.disabled = true;
 
 
 
-process.style.display="block";
+let process = document.getElementById("processBox");
 
-done.style.display="none";
+let done = document.getElementById("done");
 
-
-
-let count=0;
+let trial = document.getElementById("trial");
 
 
 
-let timer=setInterval(()=>{
+process.style.display = "block";
+
+done.style.display = "none";
+
+
+
+let count = 0;
+
+
+
+let timer = setInterval(()=>{
 
 
 count++;
 
 
 document.getElementById("progress")
-.style.width=count+"%";
+.style.width = count + "%";
 
 
 
 document.getElementById("percent")
-.innerHTML=count+"%";
+.innerHTML = count + "%";
 
 
 
-if(count>=100){
+if(count >= 100){
 
 
 clearInterval(timer);
 
 
-process.style.display="none";
 
-done.style.display="block";
+process.style.display = "none";
+
+done.style.display = "block";
 
 
-let time=new Date()
-.toLocaleString();
+
+let time = new Date().toLocaleString();
 
 
 
 document.getElementById("info")
-.innerHTML=
+.innerHTML =
 
-"Video URL:<br>"+
-url+
-"<br><br>Time:<br>"+
-time+
+"Video URL:<br>" +
+url +
+
+"<br><br>Time:<br>" +
+time +
+
 "<br><br>Status: ⏳ Pending";
 
 
 
-let orders =
-JSON.parse(localStorage.getItem("orders")) || [];
+
+// SAVE ORDER
+
+let orders = JSON.parse(
+localStorage.getItem(STORAGE_KEY)
+) || [];
 
 
 
@@ -109,7 +118,7 @@ status:"Pending"
 
 
 localStorage.setItem(
-"orders",
+STORAGE_KEY,
 JSON.stringify(orders)
 );
 
@@ -119,10 +128,10 @@ showOrders();
 
 
 
-trial.style.display="block";
+trial.style.display = "block";
 
 
-btn.disabled=false;
+btn.disabled = false;
 
 
 }
@@ -137,20 +146,23 @@ btn.disabled=false;
 
 
 
+
 function showOrders(){
 
 
-let box=document.getElementById("orders");
-
-
-let orders =
-JSON.parse(localStorage.getItem("orders")) || [];
+let box = document.getElementById("orders");
 
 
 
-if(orders.length==0){
+let orders = JSON.parse(
+localStorage.getItem(STORAGE_KEY)
+) || [];
 
-box.innerHTML="No orders yet";
+
+
+if(orders.length == 0){
+
+box.innerHTML = "No orders yet";
 
 return;
 
@@ -158,7 +170,7 @@ return;
 
 
 
-box.innerHTML="";
+box.innerHTML = "";
 
 
 
@@ -173,20 +185,17 @@ box.innerHTML += `
 
 ${o.url}
 
-
 <br><br>
 
 <b>Time:</b><br>
 
 ${o.time}
 
-
 <br><br>
 
 <b>Status:</b>
 
 ${o.status}
-
 
 </div>
 
