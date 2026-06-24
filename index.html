@@ -3,7 +3,9 @@
 
 <head>
 
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>ViewRush</title>
 
@@ -16,30 +18,24 @@
 
 
 <nav>
-
 <h1>⚡ ViewRush</h1>
-
 </nav>
 
 
 
 <section class="hero">
 
-
 <h2>
-Boost Your Channel
+Grow Your Channel
 <br>
 <span>With ViewRush</span>
 </h2>
 
-
 <p>
-Creator growth made simple
+Smart creator growth platform
 </p>
 
-
 </section>
-
 
 
 
@@ -57,14 +53,28 @@ placeholder="Paste YouTube Video URL">
 
 
 <button onclick="start()">
-
 Get Views 🚀
-
 </button>
 
 
 
-<div id="status"></div>
+
+<div id="processBox" class="process">
+
+
+<h3>⏳ Processing Order</h3>
+
+
+<div class="bar">
+
+<div id="progress"></div>
+
+</div>
+
+
+<h2 id="percent">
+0%
+</h2>
 
 
 </div>
@@ -73,18 +83,14 @@ Get Views 🚀
 
 
 
-<div class="pending" id="pending">
+
+<div id="done" class="done">
 
 
-<h3>⏳ Processing...</h3>
+<h2>✅ Order Submitted</h2>
 
 
-<p>
-Your request is in pending queue
-</p>
-
-
-<div class="loader"></div>
+<p id="info"></p>
 
 
 </div>
@@ -92,20 +98,8 @@ Your request is in pending queue
 
 
 
-
-
-<div class="notice">
-
-
-<h3>🎁 Free Trial Used</h3>
-
-
-<p>
-Next order available after 12 hours
-</p>
-
-
 </div>
+
 
 
 
@@ -120,19 +114,19 @@ Next order available after 12 hours
 
 
 <div>
-1<br>
-Add URL
+<h3>1</h3>
+Add Video URL
 </div>
 
 
 <div>
-2<br>
-Start Request
+<h3>2</h3>
+Start Order
 </div>
 
 
 <div>
-3<br>
+<h3>3</h3>
 Processing
 </div>
 
@@ -146,14 +140,34 @@ Processing
 
 
 
+<section class="trial">
+
+
+<h2>🎁 Free Trial</h2>
+
+<p>
+Your next order will be available after 12 hours
+</p>
+
+
+</section>
+
+
+
+
+
+
 <section>
 
 
 <h2>About ViewRush</h2>
 
+
 <p>
-ViewRush helps creators manage video growth with a clean
-and simple dashboard experience.
+
+ViewRush helps creators manage their video growth
+with a clean and simple experience.
+
 </p>
 
 
