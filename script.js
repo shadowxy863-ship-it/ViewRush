@@ -77,6 +77,8 @@ process.style.display="none";
 
 done.style.display="block";
 
+document.getElementById("trial").style.display="block";
+
 
 
 let time=new Date().toLocaleString();
