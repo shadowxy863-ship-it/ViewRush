@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://viewrush.shadowxy863.workers.dev/sitemap.xml
