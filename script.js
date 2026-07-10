@@ -41,8 +41,9 @@ let done=document.getElementById("done");
 
 
 process.style.display="block";
-
 done.style.display="none";
+
+document.getElementById("trial").style.display="none";
 
 
 
