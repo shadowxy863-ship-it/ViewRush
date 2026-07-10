@@ -14,7 +14,8 @@ updateStats();
 function start(){
 
 
-let url=document.getElementById("url").value;
+let input=document.getElementById("url");
+let url=input.value.trim();
 
 
 let btn=document.getElementById("btn");
