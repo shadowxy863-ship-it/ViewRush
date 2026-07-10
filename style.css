@@ -147,3 +147,14 @@ padding:30px;
 margin-top:40px;
 background:#02030a;
 }
+.process {
+    display: none;
+}
+
+.done {
+    display: none;
+}
+
+.trial {
+    display: none;
+}
