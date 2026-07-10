@@ -127,7 +127,7 @@ showOrders();
 
 updateStats();
 
-document.getElementById("url").value="";
+input.value="";
 
 btn.disabled=false;
 
